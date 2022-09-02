@@ -1,0 +1,25 @@
+{
+  "name": "voidlang",
+  "displayName": "void",
+  "description": "Language support for void",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "void",
+      "aliases": ["void", "void"],
+      "extensions": [".void",".voidlang"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "void",
+      "scopeName": "source.void",
+      "path": "./syntaxes/void.tmLanguage.json"
+    }]
+  }
+}

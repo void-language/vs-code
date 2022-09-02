@@ -1,0 +1,131 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "void",
+	"patterns": [
+        {
+            "include": "#comment"
+        },
+        {
+			"include": "#keywords"
+		},
+        {
+            "include": "#constant"
+        },
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+        "escapes": {
+            "patterns": [
+                {
+					"name": "constant.character.escape.void",
+					"match": "\\\\."
+				}
+            ]
+        },
+        "comment": {
+            "patterns": [
+                {
+                    "name": "comment.line.void",
+                    "match": "//.*$"
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.other.void",
+                    "match": "\\b(bool|char|str|i8|i16|i32|i64|int8|int16|int32|int64|u8|u16|u32|u64|uint8|uint16|uint32|uint64|f16|f32|f64|float16|float32|float64|bit|nib|byte)\\b"
+                },
+                {
+                    "name": "keyword.control.void",
+                    "match": "\\b(sync fn|fn) ([a-zA-Z]+)\\b",
+                    "captures": {
+                        "2": {
+                            "name": "entity.name.function.void"
+                        }
+                    }
+                },
+                {
+                    "name": "keyword.control.void",
+                    "match": "\\b(sync fn|fn) \\(([a-zA-Z]+)\\) ([a-zA-Z]+)\\b",
+                    "captures": {
+                        "2": {
+                            "name": "entity.name.class.void"
+                        },
+                        "3": {
+                            "name": "entity.name.function.void"
+                        }
+                    }
+                },
+                {
+                    "name": "keyword.control.void",
+                    "match": "\\bevent ([a-zA-Z]+)\\b",
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.function.void"
+                        }
+                    }
+                },
+                {
+                    "name": "keyword.control.void",
+                    "match": "\\b(error|switch|case|impl|default|if|else|every|until|struct|init|as|break|waitfor)\\b"
+                },
+                {
+                    "name": "keyword.language.void",
+                    "match": "true|false|void"
+                },
+                {
+                    "name": "support.function.void",
+                    "match": "\\b(printf|print|println|release|open|kill)\\b"
+                }
+            ]
+        },
+        "constant": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.void",
+                    "match": "((0x[0-9a-fA-F]+)|(0b[01]+)|(0o[0-7]+)|([0-9]+(\\.[0-9]*)?))([eE][-+]?[0-9]+)?"
+                },
+                {
+                    "name": "constant.language.void",
+                    "match": "true|false|void"
+                }
+            ]
+        },
+        "strings": {
+            "patterns": [
+                {
+                    "name": "string.quoted.double.void",
+                    "begin": "\"",
+                    "end": "\"",
+                    "patterns": [
+                        {
+                            "include": "#escapes"
+                        }
+                    ]
+                },
+                {
+                    "name": "string.quoted.single.void",
+                    "begin": "'",
+                    "end": "'",
+                    "patterns": [
+                        {
+                            "include": "#escapes"
+                        }
+                    ]
+                }
+            ]
+        },
+        "entities": {
+            "patterns": [
+                {
+                    "name": "entity.name.function.void",
+                    "match": "\\b()\\b"
+                }
+            ]
+        }
+	},
+	"scopeName": "source.void"
+}
